@@ -29,7 +29,7 @@ const Banner = () => {
             image: "/images/ImageBg.jpg",
             overlay: (
                 <svg
-                    className="absolute top-0 left-0 w-full h-full z-10"
+                    className="absolute top-0 left-0 w-full h-full z-10 sm:hidden"
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
                 >
@@ -61,7 +61,7 @@ const Banner = () => {
             image: "/images/ImageBg2.jpg",
             overlay: (
                 <svg
-                    className="absolute top-0 left-0 w-full h-full z-10"
+                    className="absolute top-0 left-0 w-full h-full z-10 sm:hidden"
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
                 >

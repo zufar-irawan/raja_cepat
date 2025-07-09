@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import VehicleSection from "@/components/KendaraanGaleri";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Banner from "@/components/banner";
 
 export default function Home() {
   return (
@@ -12,38 +13,7 @@ export default function Home() {
       <Header />
       <main className="min-h-screen bg-white text-gray-800 pt-20">
         {/* HERO SECTION */}
-        <section className="relative h-[600px] w-full overflow-hidden z-0">
-          <Image
-            src="/images/ImageBg.jpg"
-            alt="Clean Banner"
-            fill
-            priority
-            className="object-cover"
-          />
-
-          {/* SVG Overlay */}
-          <svg
-            className="absolute top-0 left-0 w-full h-full z-10"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <polygon
-              points="0,0 60,0 40,100 0,100"
-              fill="rgba(220, 38, 38, 0.42)"
-            />
-          </svg>
-
-          {/* Text */}
-          <div className="absolute z-20 text-white p-10 w-full md:w-1/2 h-full flex items-center animate-fade-in">
-            <div>
-              <h2 className="text-5xl font-bold mb-3">RAJA CEPAT</h2>
-              <p className="text-sm leading-relaxed">
-                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan dan transportasi laut,
-                berkantor pusat di Sekejati, Jawa Barat, dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Banner />
 
         {/* SERVICES SECTION */}
         <section className="py-20 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
@@ -114,6 +84,46 @@ export default function Home() {
 
         {/* VEHICLE SECTION */}
         <VehicleSection />
+
+        {/* WareHouse Section */}
+        <section id="warehouse" className="py-24">
+          <div className="w-full p-20 bg-orange-500">
+            <h1 className="text-white font-bold text-center text-3xl py-10">Warehouse</h1>
+
+            <div className="flex flex-col gap-5 w-[80%] mx-auto md:flex-row">
+              <div>
+                <Image
+                  src="/images/warehouse.png"
+                  alt="warehouse"
+                  width={2500}
+                  height={2500}
+                />
+              </div>
+
+              <div className="text-gray-200 text-md">
+                <p>
+                  Sebuah fasilitas dinamis yang penting dalam
+                  rantai pasokan, melayani semua kegiatan pemenuhan
+                  operasional termasuk proses Inbound, Pemeriksaan
+                  QC, Pelabelan, Penyimpanan, Pengemasan, Outbound,
+                  dan Pengiriman.
+                </p>
+
+                <p className="pt-10">
+                  Ini memainkan peran kunci dalam membebaskan UMKM
+                  dan wirausahawan dari beban biaya tetap dengan
+                  menyediakan layanan pemenuhan yang mendukung ekspansi
+                  bisnis ke area strategis di seluruh Indonesia dengan
+                  risiko minimal. Gudang berfungsi sebagai mitra penting
+                  bagi kliennya, mendorong pertumbuhan dan efisiensi
+                  bisnis.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
 
         {/* PARTNER SECTION */}
         <section id="mitra" className="py-24 bg-white text-center">
