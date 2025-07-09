@@ -3,17 +3,15 @@
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import VehicleSection from "@/components/KendaraanGaleri";
-import * as framerMotion from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <>
       <Header />
-
-<<<<<<< HEAD
       <main className="min-h-screen bg-white text-gray-800 pt-20">
-        {/* Banner Section */}
+        {/* HERO SECTION */}
         <section className="relative h-[600px] w-full overflow-hidden z-0">
           <Image
             src="/images/ImageBg.jpg"
@@ -35,26 +33,25 @@ export default function Home() {
             />
           </svg>
 
+          {/* Text */}
           <div className="absolute z-20 text-white p-10 w-full md:w-1/2 h-full flex items-center animate-fade-in">
             <div>
               <h2 className="text-5xl font-bold mb-3">RAJA CEPAT</h2>
               <p className="text-sm leading-relaxed">
-                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan
-                dan transportasi laut, berkantor pusat di Sekejati, Jawa Barat,
-                dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
+                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan dan transportasi laut,
+                berkantor pusat di Sekejati, Jawa Barat, dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
               </p>
-=======
-      <main className="min-h-screen bg-white text-gray-800 pt-18">
-        <Banner />
+            </div>
+          </div>
+        </section>
 
-        {/* Services Section */}
+        {/* SERVICES SECTION */}
         <section className="py-20 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-5xl font-bold mb-2">Our Services</h2>
             <h3 className="text-2xl font-semibold mb-4">Charter & Courier</h3>
             <p className="text-lg mb-12">
-              We have a few product that can fit in you any situations, let
-              take a look!
+              We have a few product that can fit in you any situations, let take a look!
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
@@ -101,22 +98,22 @@ export default function Home() {
                     height={100}
                     className="mb-4 object-contain"
                   />
-
                   <h4 className="text-center text-sm font-bold text-orange-600 h-10 flex items-center justify-center">
                     {card.title}
                   </h4>
-
                   <p className="text-center text-xs text-gray-700 h-14 flex items-center justify-center">
                     {card.desc}
                   </p>
                 </div>
               ))}
->>>>>>> 4800beecd7d62d3087fee60fc9323cff69c1d188
             </div>
           </div>
         </section>
 
-        {/* Partner and Clients */}
+        {/* VEHICLE SECTION */}
+        <VehicleSection />
+
+        {/* PARTNER SECTION */}
         <section id="mitra" className="py-24 bg-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-[#f05423] mb-12">
@@ -154,11 +151,7 @@ export default function Home() {
           </div>
         </section>
 
-<<<<<<< HEAD
-        {/* Collaborate CTA */}
-=======
-        {/* CTA Section */}
->>>>>>> 4800beecd7d62d3087fee60fc9323cff69c1d188
+        {/* CTA SECTION */}
         <section className="py-20 bg-white text-center">
           <motion.h2
             className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-8"
@@ -185,7 +178,6 @@ export default function Home() {
           </motion.div>
         </section>
       </main>
-
       <Footer />
     </>
   );
