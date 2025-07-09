@@ -18,14 +18,14 @@ export default function Home() {
           </h2>
           <div className="flex justify-center gap-10 items-center flex-wrap">
             {[
-              "eurekabook",
+              "penerbit",
               "auriga",
               "cosmax",
               "gokomodo",
               "idmark",
               "Jajai",
               "kitani",
-              "penerbit",
+              "eurekabook",
               "pro",
               "sinbad",
               "super",
