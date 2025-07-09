@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Banner from "@/components/banner";
 
 export default function Home() {
   return (
