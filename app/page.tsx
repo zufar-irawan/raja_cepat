@@ -12,9 +12,43 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="pt-18">
-        {/* Beranda */}
-        <Banner />
+      <main className="min-h-screen bg-white text-gray-800 pt-18">
+        {/* Banner Section */}
+        <section className="relative h-[600px] w-full overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src="/images/ImageBg.jpg"
+            alt="Clean Banner"
+            fill
+            priority
+            className="object-cover"
+          />
+
+          {/* SVG Overlay Diagonal Merah */}
+          <svg
+            className="absolute top-0 left-0 w-full h-full z-10"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <polygon
+              points="0,0 60,0 40,100 0,100"
+              fill="rgba(220, 38, 38, 0.42)" // merah semi-transparan
+            />
+          </svg>
+
+          {/* Teks */}
+          <div className="absolute z-20 text-white p-10 w-full md:w-1/2 h-full flex items-center animate-fade-in">
+            <div>
+              <h2 className="text-4xl font-bold mb-3">CLEAN</h2>
+              <p className="text-sm leading-relaxed">
+                Melalui prinsip profesional, mengutamakan budaya bersih &
+                kepatuhan, tidak melupakan etika, mendukung hal-hal bermuatan
+                lingkungan demi menciptakan proses operasional bisnis yang lebih
+                baik.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Partner adan CLients */}
         <section id="mitra" className="py-24 bg-white text-center">
@@ -24,14 +58,14 @@ export default function Home() {
             </h2>
             <div className="flex justify-center gap-10 items-center flex-wrap">
               {[
-                "eurekabook",
+                "penerbit",
                 "auriga",
                 "cosmax",
                 "gokomodo",
                 "idmark",
                 "Jajai",
                 "kitani",
-                "penerbit",
+                "eurekabook",
                 "pro",
                 "sinbad",
                 "super",
@@ -53,8 +87,34 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
 
+        {/* Collaborate CTA Section */}
+        <section className="py-20 bg-white text-center">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            Excited to collaborate with RACE?
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href="https://api.whatsapp.com/send/?phone=6281281050420&text&type=phone_number&app_absent=0"
+              className="inline-block bg-[#f05423] hover:bg-[#c6431b] text-white px-6 py-3 rounded-md font-semibold text-sm transition duration-300 shadow-md"
+            >
+              Contact us
+            </a>
+          </motion.div>
+        </section>
+      </main>
       <Footer />
     </>
   );
