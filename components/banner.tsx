@@ -18,11 +18,10 @@ const Banner = () => {
                             left-0
                         ">
                     <div>
-                        <h2 className="text-4xl font-bold mb-3">Professional Shipment</h2>
+                        <h2 className="text-4xl font-bold mb-3">RAJA CEPAT</h2>
                         <p className="text-md leading-relaxed">
-                            We provide <span className="font-bold">The Best Service</span>
-                            for you and we make sure your shipping arrives <span className="font-bold">Safely</span>
-                            and <span className="font-bold">On Time</span>
+                            PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan dan transportasi laut,
+                            berkantor pusat di Sekejati, Jawa Barat, dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
                         </p>
                     </div>
                 </div>
