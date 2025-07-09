@@ -60,7 +60,7 @@ export default function VehicleSection() {
   return (
     <section className="py-20 bg-white text-center relative z-10">
       <motion.h2
-        className="text-3xl sm:text-4xl font-bold text-[#ff671f] mb-2"
+        className="text-3xl sm:text-4xl font-bold text-[#0c229f] mb-2"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -121,12 +121,6 @@ export default function VehicleSection() {
               transition={{ duration: 0.4 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-3 right-3 text-gray-500 hover:text-red-500 text-xl font-bold"
-              >
-                &times;
-              </button>
 
               <Image
                 src={selected.image}
