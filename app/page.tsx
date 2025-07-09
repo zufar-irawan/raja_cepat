@@ -1,6 +1,7 @@
 "use client";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
+import VehicleSection from "@/components/KendaraanGaleri";
 import * as framerMotion from "framer-motion";
 import Image from "next/image";
 
@@ -49,6 +50,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Vehicle Section */}
+      <VehicleSection />
 
       {/* Partner adan CLients */}
       <section id="mitra" className="py-24 bg-white text-center">
