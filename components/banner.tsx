@@ -29,7 +29,7 @@ const Banner = () => {
             image: "/images/ImageBg.jpg",
             overlay: (
                 <svg
-                    className="absolute top-0 left-0 w-full h-full z-10 sm:hidden"
+                    className="absolute top-0 left-0 w-full h-full z-10"
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
                 >
@@ -61,7 +61,7 @@ const Banner = () => {
             image: "/images/ImageBg2.jpg",
             overlay: (
                 <svg
-                    className="absolute top-0 left-0 w-full h-full z-10 sm:hidden"
+                    className="absolute top-0 left-0 w-full h-full z-10"
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
                 >
@@ -91,7 +91,7 @@ const Banner = () => {
     return (
         <>
             {/* Banner Section */}
-            <section className="relative h-[600px] w-full overflow-hidden">
+            <section id="beranda" className="relative h-[600px] w-full overflow-hidden">
                 {/* Background Image */}
                 {slides.map((slide, index: number) => (
                     <div

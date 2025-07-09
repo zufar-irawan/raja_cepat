@@ -16,7 +16,7 @@ export default function Home() {
         <Banner />
 
         {/* Services Section */}
-        <section className="py-14 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
+        <section id="layanan" className="py-14 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold mb-2">Our Services</h2>
             <h3 className="text-xl font-medium mb-4">Charter & Courier</h3>

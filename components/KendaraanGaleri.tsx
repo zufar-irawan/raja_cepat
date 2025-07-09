@@ -58,7 +58,7 @@ export default function VehicleSection() {
   const [selected, setSelected] = useState<Vehicle | null>(null);
 
   return (
-    <section className="py-20 bg-white text-center relative z-10">
+    <section id="kendaraan" className="py-20 bg-white text-center relative z-10">
       <motion.h2
         className="text-3xl sm:text-4xl font-bold text-[#0c229f] mb-2"
         initial={{ opacity: 0, y: 20 }}
