@@ -17,7 +17,7 @@ const Header = () => {
     }, [])
 
     return (
-        <header className="fixed w-full">
+        <header className="fixed w-full z-50">
             <div className="w-full relative bg-white py-5 z-50">
                 <Image
                     src={"/images/logo.png"}
