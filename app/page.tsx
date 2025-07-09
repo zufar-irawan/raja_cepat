@@ -44,7 +44,7 @@ export default function Home() {
                 {
                   title: "Cargo Darat",
                   desc: "Ground services with various types of vehicles equipped with GPS & ERP.",
-                  img: "/images/CargoDarat.jpg",
+                  img: "/images/Cargodarat.jpg",
                 },
                 {
                   title: "Cargo Laut",
@@ -69,11 +69,11 @@ export default function Home() {
                     className="mb-4 object-contain"
                   />
 
-                  <h4 className="text-center text-sm font-bold text-orange-600 h-10 flex items-center justify-center">
+                  <h4 className="text-center text-xl font-bold text-orange-600 h-10 flex items-center justify-center">
                     {card.title}
                   </h4>
 
-                  <p className="text-center text-xs text-gray-700 h-14 flex items-center justify-center">
+                  <p className="text-center text-sm text-gray-700 h-14 flex items-center justify-center">
                     {card.desc}
                   </p>
                 </div>
