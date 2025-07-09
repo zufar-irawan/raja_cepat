@@ -15,16 +15,16 @@ export default function Home() {
         {/* HERO SECTION */}
         <Banner />
 
-        {/* SERVICES SECTION */}
-        <section className="py-20 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
+        {/* Services Section */}
+        <section className="py-14 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold mb-2">Our Services</h2>
-            <h3 className="text-2xl font-semibold mb-4">Charter & Courier</h3>
-            <p className="text-lg mb-12">
-              We have a few product that can fit in you any situations, let take a look!
+            <h2 className="text-4xl font-bold mb-2">Our Services</h2>
+            <h3 className="text-xl font-medium mb-4">Charter & Courier</h3>
+            <p className="text-base mb-10">
+              We have a few products that can fit in any situation—take a look!
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
               {[
                 {
                   title: "Same day Services",
@@ -33,50 +33,55 @@ export default function Home() {
                 },
                 {
                   title: "Next day Services",
-                  desc: "Delivery arrive the next day or within 24 hours.",
+                  desc: "Delivery arrives the next day or within 24 hours.",
                   img: "/images/NextDay.png",
                 },
                 {
                   title: "Regular Services",
-                  desc: "Standard Shipping within 1-3 days.",
+                  desc: "Standard shipping within 1–3 days.",
                   img: "/images/RegularService.png",
                 },
                 {
                   title: "Cargo Darat",
-                  desc: "Ground services with various types of vehicles equipped with GPS & ERP.",
-                  img: "/images/Cargodarat.jpg",
+                  desc: "Ground services with GPS & ERP-equipped vehicles.",
+                  img: "/images/CargoDarat.png",
                 },
                 {
                   title: "Cargo Laut",
-                  desc: "Delivery on the same day or within 8 hours",
-                  img: "/images/CargoLaut.jpg",
+                  desc: "Ship cargo with various options to suit your needs.",
+                  img: "/images/CargoLaut.png",
                 },
                 {
                   title: "Cargo Udara",
-                  desc: "Delivery on the same day or within 8 hours",
-                  img: "/images/CargoUdara.jpg",
+                  desc: "Fastest delivery via trusted air freight partners.",
+                  img: "/images/CargoUdara.png",
                 },
               ].map((card, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="bg-white text-gray-800 px-4 py-6 rounded-lg shadow-md flex flex-col items-center justify-between hover:scale-105 transition h-80"
+                  className="bg-white text-gray-800 px-4 py-6 rounded-xl border border-gray-200 shadow-md flex flex-col items-center justify-between h-[310px] hover:ring-2 hover:ring-orange-400 transition-all duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: true }}
                 >
-                  <Image
-                    src={card.img}
-                    alt={card.title}
-                    width={100}
-                    height={100}
-                    className="mb-4 object-contain"
-                  />
-
-                  <h4 className="text-center text-xl font-bold text-orange-600 h-10 flex items-center justify-center">
+                  <div className="w-[90px] h-[90px] mb-4">
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      width={90}
+                      height={90}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <h4 className="text-sm font-semibold text-orange-600 text-center h-12 flex items-center justify-center">
                     {card.title}
                   </h4>
-
-                  <p className="text-center text-sm text-gray-700 h-14 flex items-center justify-center">
+                  <p className="text-xs text-gray-700 text-center h-14 flex items-center justify-center px-2">
                     {card.desc}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -128,10 +133,10 @@ export default function Home() {
         {/* PARTNER SECTION */}
         <section id="mitra" className="py-24 bg-white text-center">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-[#f05423] mb-12">
+            <h2 className="text-3xl font-bold text-[#f05423] mb-10">
               Partner and Clients
             </h2>
-            <div className="flex justify-center gap-10 items-center flex-wrap">
+            <div className="flex justify-center gap-8 items-center flex-wrap">
               {[
                 "penerbit",
                 "auriga",
@@ -152,8 +157,8 @@ export default function Home() {
                     key={logo}
                     src={`/images/${logo}.${ext}`}
                     alt={logo}
-                    className="h-12"
-                    initial={{ opacity: 0, y: 20 }}
+                    className="h-10 grayscale hover:grayscale-0 transition duration-300"
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: i * 0.05 }}
                   />
@@ -163,10 +168,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA SECTION */}
-        <section className="py-20 bg-white text-center">
+        {/* CTA Section */}
+        <section className="py-16 bg-white text-center">
           <motion.h2
-            className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-8"
+            className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
