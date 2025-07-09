@@ -2,26 +2,56 @@
 
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import VehicleSection from "@/components/KendaraanGaleri";
 import Image from "next/image";
-import Banner from "@/components/banner";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <>
       <Header />
+      <main className="min-h-screen bg-white text-gray-800 pt-20">
+        {/* HERO SECTION */}
+        <section className="relative h-[600px] w-full overflow-hidden z-0">
+          <Image
+            src="/images/ImageBg.jpg"
+            alt="Clean Banner"
+            fill
+            priority
+            className="object-cover"
+          />
 
-      <main className="min-h-screen bg-white text-gray-800 pt-18">
-        <Banner />
+          {/* SVG Overlay */}
+          <svg
+            className="absolute top-0 left-0 w-full h-full z-10"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <polygon
+              points="0,0 60,0 40,100 0,100"
+              fill="rgba(220, 38, 38, 0.42)"
+            />
+          </svg>
 
-        {/* Services Section */}
+          {/* Text */}
+          <div className="absolute z-20 text-white p-10 w-full md:w-1/2 h-full flex items-center animate-fade-in">
+            <div>
+              <h2 className="text-5xl font-bold mb-3">RAJA CEPAT</h2>
+              <p className="text-sm leading-relaxed">
+                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan dan transportasi laut,
+                berkantor pusat di Sekejati, Jawa Barat, dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES SECTION */}
         <section className="py-20 bg-gradient-to-b from-orange-500 to-orange-300 text-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-5xl font-bold mb-2">Our Services</h2>
             <h3 className="text-2xl font-semibold mb-4">Charter & Courier</h3>
             <p className="text-lg mb-12">
-              We have a few product that can fit in you any situations, let
-              take a look!
+              We have a few product that can fit in you any situations, let take a look!
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
@@ -82,7 +112,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Partner and Clients */}
+        {/* VEHICLE SECTION */}
+        <VehicleSection />
+
+        {/* PARTNER SECTION */}
         <section id="mitra" className="py-24 bg-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-[#f05423] mb-12">
@@ -120,7 +153,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA SECTION */}
         <section className="py-20 bg-white text-center">
           <motion.h2
             className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-8"
@@ -147,7 +180,6 @@ export default function Home() {
           </motion.div>
         </section>
       </main>
-
       <Footer />
     </>
   );
