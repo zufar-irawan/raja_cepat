@@ -33,9 +33,9 @@ const Header = () => {
                 ${isScrolled ? 'top-22' : 'top-0'} ease-in-out
             `}>
                 <ul className="flex justify-center w-[50%] mx-auto gap-8">
-                    <li className="text-gray-800 hover:text-blue-600"><Link href={"#"}>Beranda</Link></li>
-                    <li className="text-gray-800 hover:text-blue-600"><Link href={"#"}>Tentang</Link></li>
-                    <li className="text-gray-800 hover:text-blue-600"><Link href={"#"}>Kontak</Link></li>
+                    <li className="text-gray-800 hover:text-orange-500"><Link href={"#"}>Beranda</Link></li>
+                    <li className="text-gray-800 hover:text-orange-500"><Link href={"#"}>Tentang</Link></li>
+                    <li className="text-gray-800 hover:text-orange-500"><Link href={"#"}>Kontak</Link></li>
                 </ul>
             </div>
         </header>

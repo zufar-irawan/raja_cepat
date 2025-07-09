@@ -2,16 +2,16 @@
 
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import VehicleSection from "@/components/KendaraanGaleri";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <>
       <Header />
-
       <main className="min-h-screen bg-white text-gray-800 pt-20">
-        {/* Banner Section */}
+        {/* HERO SECTION */}
         <section className="relative h-[600px] w-full overflow-hidden z-0">
           <Image
             src="/images/ImageBg.jpg"
@@ -20,6 +20,8 @@ export default function Home() {
             priority
             className="object-cover"
           />
+
+          {/* SVG Overlay */}
           <svg
             className="absolute top-0 left-0 w-full h-full z-10"
             viewBox="0 0 100 100"
@@ -30,13 +32,14 @@ export default function Home() {
               fill="rgba(220, 38, 38, 0.42)"
             />
           </svg>
+
+          {/* Text */}
           <div className="absolute z-20 text-white p-10 w-full md:w-1/2 h-full flex items-center animate-fade-in">
             <div>
               <h2 className="text-5xl font-bold mb-3">RAJA CEPAT</h2>
               <p className="text-sm leading-relaxed">
-                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan
-                dan transportasi laut, berkantor pusat di Sekejati, Jawa Barat,
-                dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
+                PT Raja Cepat Nusantara adalah perusahaan di bidang perkapalan dan transportasi laut,
+                berkantor pusat di Sekejati, Jawa Barat, dengan 250–499 karyawan dan pendapatan hingga Rp25 juta.
               </p>
             </div>
           </div>
@@ -114,8 +117,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Partner and Clients */}
-        <section id="mitra" className="py-20 bg-gray-50 text-center">
+        {/* VEHICLE SECTION */}
+        <VehicleSection />
+
+        {/* PARTNER SECTION */}
+        <section id="mitra" className="py-24 bg-white text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-[#f05423] mb-10">
               Partner and Clients
@@ -179,7 +185,6 @@ export default function Home() {
           </motion.div>
         </section>
       </main>
-
       <Footer />
     </>
   );
