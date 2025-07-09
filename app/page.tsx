@@ -16,7 +16,7 @@ export default function Home() {
         <section className="relative h-[600px] w-full overflow-hidden">
           {/* Background Image */}
           <Image
-            src="/images/ImageBg.jpg" 
+            src="/images/ImageBg.jpg"
             alt="Clean Banner"
             fill
             priority
@@ -40,8 +40,10 @@ export default function Home() {
             <div>
               <h2 className="text-4xl font-bold mb-3">CLEAN</h2>
               <p className="text-sm leading-relaxed">
-                Melalui prinsip profesional, mengutamakan budaya bersih & kepatuhan, tidak melupakan etika, mendukung
-                hal-hal bermuatan lingkungan demi menciptakan proses operasional bisnis yang lebih baik.
+                Melalui prinsip profesional, mengutamakan budaya bersih &
+                kepatuhan, tidak melupakan etika, mendukung hal-hal bermuatan
+                lingkungan demi menciptakan proses operasional bisnis yang lebih
+                baik.
               </p>
             </div>
           </div>
@@ -85,7 +87,35 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Footer  />
+
+      {/* Collaborate CTA Section */}
+      <section className="py-20 bg-white text-center">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold bg-[#ff671f] text-transparent bg-clip-text mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          Excited to collaborate with RACE?
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <a
+            href="https://api.whatsapp.com/send/?phone=6281281050420&text&type=phone_number&app_absent=0"
+            className="inline-block bg-[#f05423] hover:bg-[#c6431b] text-white px-6 py-3 rounded-md font-semibold text-sm transition duration-300 shadow-md"
+          >
+            Contact us
+          </a>
+        </motion.div>
+      </section>
+
+      <Footer />
     </>
   );
 }
