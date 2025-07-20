@@ -1,148 +1,155 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { Info } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-interface Vehicle {
-  name: string;
-  image: string;
-  capacity: string;
-  volume: string;
-}
-
-const vehicles: Vehicle[] = [
+const getVehicles = (t: (key: string, options?: any) => string) => [
   {
-    name: "CDE Truck",
+    name: t("vehicle.types.cdeTruck"),
     image: "/images/cde.png",
     capacity: "2.200kg",
-    volume: "P 310 x L 170 x T 170",
+    dimensions: "310×170×170",
+    color: "#3b82f6",
+    key: "cdeTruck"
   },
   {
-    name: "CDE Frozen Truck",
+    name: t("vehicle.types.cdeFrozen"),
     image: "/images/frozen.png",
     capacity: "2.000kg",
-    volume: "P 475 x L 170 x T 175",
+    dimensions: "475×170×175",
+    color: "#06b6d4",
+    key: "cdeFrozen"
   },
   {
-    name: "L300",
+    name: t("vehicle.types.l300"),
     image: "/images/l300.png",
     capacity: "800kg",
-    volume: "P 237 x L 163 x T 122",
+    dimensions: "237×163×122",
+    color: "#10b981",
+    key: "l300"
   },
   {
-    name: "Grand Max",
+    name: t("vehicle.types.grandMax"),
     image: "/images/grandmax.png",
     capacity: "600kg",
-    volume: "P 220 x L 135 x T 130",
+    dimensions: "220×135×130",
+    color: "#f59e0b",
+    key: "grandMax"
   },
   {
-    name: "Motor",
+    name: t("vehicle.types.motor"),
     image: "/images/motor.png",
     capacity: "30kg",
-    volume: "P 100 x L 50 x T 40",
+    dimensions: "100×50×40",
+    color: "#ef4444",
+    key: "motor"
   },
 ];
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' },
-  }),
-};
-
-
-export default function VehicleSection() {
-  const [selected, setSelected] = useState<Vehicle | null>(null);
+const VehicleSection = () => {
+  const { t } = useTranslation();
+  const vehicles = getVehicles(t);
 
   return (
-    <section id="kendaraan" className="py-20 bg-white text-center relative z-10">
-      <motion.h2
-        className="text-3xl sm:text-4xl font-bold text-[#0c229f] mb-2"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        Meet our vehicles!
-      </motion.h2>
-      <motion.p
-        className="text-gray-600 mb-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-      >
-        We provide a lot of vehicle to rescue your needs!
-      </motion.p>
+    <section className="bg-gradient-to-br from-slate-50 to-white py-16 px-4">
+      <div className="max-w-7xl mx-auto">
 
-      <div className="flex flex-wrap justify-center gap-6 px-4 z-20 relative">
-        {vehicles.map((v, i) => (
-          <motion.div
-            key={v.name}
-            className="bg-white border border-blue-200 rounded-xl shadow-md p-4 cursor-pointer w-[220px] hover:shadow-xl transition"
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            viewport={{ once: true }}
-            custom={i}
-            onClick={() => setSelected(v)}
-          >
-            <Image
-              src={v.image}
-              alt={v.name}
-              width={160}
-              height={100}
-              className="mx-auto object-contain"
-            />
-            <h3 className="text-lg font-bold mt-4 text-[#0c229f]">{v.name}</h3>
-            <p className="text-sm text-gray-700">Capacity Max: {v.capacity}</p>
-            <p className="text-sm mb-1 text-gray-700">Vol (cm): {v.volume}</p>
-          </motion.div>
-        ))}
-      </div>
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("vehicle.title")}</h2>
+          <p className="text-gray-600">{t("vehicle.subtitle")}</p>
+        </motion.div>
 
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelected(null)}
-          >
+        {/* Vehicle Gallery */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {vehicles.map((vehicle, index) => (
             <motion.div
-              className=""
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              onClick={(e) => e.stopPropagation()}
+              key={vehicle.key}
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                {/* Vehicle Image */}
+                <div className="relative h-48 flex items-center justify-center">
+                  <img
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    className="w-full h-36 object-contain px-4 filter drop-shadow transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,0,0,0.2)]"
+                    style={{ filter: `drop-shadow(0 0 0 ${vehicle.color})` }}
+                    onMouseOver={(e) => (e.currentTarget.style.filter = `drop-shadow(0 0 20px ${vehicle.color})`)}
+                    onMouseOut={(e) => (e.currentTarget.style.filter = `drop-shadow(0 0 0 ${vehicle.color})`)}
+                  />
 
-              <Image
-                src={selected.image}
-                alt={selected.name}
-                width={800}
-                height={400}
-                className="w-full h-auto object-contain rounded"
-              />
+                  {/* Overlay Info Button */}
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
+                      <Info className="w-4 h-4 text-gray-600" />
+                    </div>
+                  </div>
 
-              <div className="mt-4 text-center">
-                <h3 className="text-2xl font-bold text-[#ff671f] mb-1">
-                  {selected.name}
-                </h3>
-                <p className="text-sm text-black">
-                  Capacity Max: {selected.capacity}
-                </p>
-                <p className="text-sm text-black">Volume: {selected.volume}</p>
+                  {/* Color Accent */}
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 h-1"
+                    style={{ backgroundColor: vehicle.color }}
+                  />
+                </div>
+
+                {/* Vehicle Info */}
+                <div className="p-5">
+                  <h3 className="font-semibold text-gray-900 mb-3 text-center">
+                    {vehicle.name}
+                  </h3>
+
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <div className="flex justify-between">
+                      <span>{t("vehicle.capacity")}</span>
+                      <span className="font-medium">{vehicle.capacity}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t("vehicle.dimensions")}</span>
+                      <span className="font-medium">{vehicle.dimensions}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+        </div>
+
+        {/* Fitur Bawah */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="inline-flex items-center gap-6 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#22c55e' }} />
+              {t("vehicle.features.wellMaintained")}
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
+              {t("vehicle.features.realPhotos")}
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
+              {t("vehicle.features.readyToday")}
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
-}
+};
+
+export default VehicleSection;
