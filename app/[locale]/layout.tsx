@@ -1,8 +1,9 @@
-// app/layout.tsx
-
-import "./globals.css";
+// app/[locale]/layout.tsx
+import "../globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { languages } from "@/app/i18n/settings";
+import { notFound } from "next/navigation";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -15,13 +16,21 @@ export const metadata: Metadata = {
   description: "Multilingual site",
 };
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  const { locale } = params;
+
+  if (!languages.includes(locale)) {
+    notFound(); 
+  }
+
   return (
-    <html lang="id" dir="ltr" className={montserrat.variable}>
+    <html lang={locale} className={montserrat.variable}>
       <body className="font-montserrat">{children}</body>
     </html>
   );

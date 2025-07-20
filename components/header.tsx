@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { HiMenu, HiX, HiChevronDown } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useRouter, usePathname } from "next/navigation";
 import { i18n } from "@/app/i18n/client";
 
 const languages = [
@@ -20,6 +21,8 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("");
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
   const { t } = useTranslation();
 
   const navItems = [
@@ -67,8 +70,13 @@ const Header = () => {
   }, []);
 
   const handleLanguageChange = (lang: typeof languages[0]) => {
-    i18n.changeLanguage(lang.code);
-    setIsLanguageDropdownOpen(false);
+  const segments = pathname.split("/");
+  segments[1] = lang.code; 
+  const newPath = segments.join("/") || "/";
+  
+  i18n.changeLanguage(lang.code); 
+  router.push(newPath); 
+  setIsLanguageDropdownOpen(false);
   };
 
   if (!mounted) return null;
