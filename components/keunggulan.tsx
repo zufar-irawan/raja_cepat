@@ -12,7 +12,7 @@ const cardVariants = {
     transition: {
       delay: i * 0.1,
       duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1] as const, // valid for TypeScript
+      ease: [0.25, 0.1, 0.25, 1] as const,
     },
   }),
 };
@@ -20,41 +20,44 @@ const cardVariants = {
 const Keunggulan = () => {
   const { t } = useTranslation();
 
-  const advantages = useMemo(() => [
-    {
-      title: t("advantages.items.doorToDoor.title"),
-      description: t("advantages.items.doorToDoor.description"),
-      icon: "🚪",
-    },
-    {
-      title: t("advantages.items.doorToPort.title"),
-      description: t("advantages.items.doorToPort.description"),
-      icon: "🚢",
-    },
-    {
-      title: t("advantages.items.portToPort.title"),
-      description: t("advantages.items.portToPort.description"),
-      icon: "⚓",
-    },
-    {
-      title: t("advantages.items.realTime.title"),
-      description: t("advantages.items.realTime.description"),
-      icon: "⏱️",
-    },
-    {
-      title: t("advantages.items.deliveryNote.title"),
-      description: t("advantages.items.deliveryNote.description"),
-      icon: "📄",
-    },
-    {
-      title: t("advantages.items.coverage.title"),
-      description: t("advantages.items.coverage.description"),
-      icon: "🗺️",
-    },
-  ], [t]);
+  const advantages = useMemo(
+    () => [
+      {
+        title: t("advantages.items.doorToDoor.title"),
+        description: t("advantages.items.doorToDoor.description"),
+        icon: "🚪",
+      },
+      {
+        title: t("advantages.items.doorToPort.title"),
+        description: t("advantages.items.doorToPort.description"),
+        icon: "🚢",
+      },
+      {
+        title: t("advantages.items.portToPort.title"),
+        description: t("advantages.items.portToPort.description"),
+        icon: "⚓",
+      },
+      {
+        title: t("advantages.items.realTime.title"),
+        description: t("advantages.items.realTime.description"),
+        icon: "⏱️",
+      },
+      {
+        title: t("advantages.items.deliveryNote.title"),
+        description: t("advantages.items.deliveryNote.description"),
+        icon: "📄",
+      },
+      {
+        title: t("advantages.items.coverage.title"),
+        description: t("advantages.items.coverage.description"),
+        icon: "🗺️",
+      },
+    ],
+    [t]
+  );
 
   return (
-    <section className="bg-white py-20 px-6 md:px-16" id="advantages">
+    <section className="bg-white py-20 px-6 md:px-16 font-montserrat" id="advantages">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
@@ -88,7 +91,9 @@ const Keunggulan = () => {
               className="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition"
             >
               <div className="text-4xl mb-3">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {item.title}
+              </h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
             </motion.div>
           ))}

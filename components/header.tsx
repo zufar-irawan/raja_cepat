@@ -34,23 +34,30 @@ const Header = () => {
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
+  // Cek apakah sedang di halaman contact atau privacy
+  const isSpecialPage = pathname.includes('/contact') || pathname.includes('/privacy');
+
   useEffect(() => {
     setMounted(true);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      const sections = document.querySelectorAll("section[id]");
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const top = rect.top + window.scrollY;
-        const bottom = top + section.clientHeight;
-        const id = section.getAttribute("id");
+      
+      // Hanya jalankan active section detection di halaman utama
+      if (!isSpecialPage) {
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+        const sections = document.querySelectorAll("section[id]");
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const top = rect.top + window.scrollY;
+          const bottom = top + section.clientHeight;
+          const id = section.getAttribute("id");
 
-        if (scrollPosition >= top && scrollPosition < bottom && id) {
-          setActiveSection(`#${id}`);
-        }
-      });
+          if (scrollPosition >= top && scrollPosition < bottom && id) {
+            setActiveSection(`#${id}`);
+          }
+        });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -67,16 +74,16 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isSpecialPage]);
 
   const handleLanguageChange = (lang: typeof languages[0]) => {
-  const segments = pathname.split("/");
-  segments[1] = lang.code; 
-  const newPath = segments.join("/") || "/";
-  
-  i18n.changeLanguage(lang.code); 
-  router.push(newPath); 
-  setIsLanguageDropdownOpen(false);
+    const segments = pathname.split("/");
+    segments[1] = lang.code; 
+    const newPath = segments.join("/") || "/";
+    
+    i18n.changeLanguage(lang.code); 
+    router.push(newPath); 
+    setIsLanguageDropdownOpen(false);
   };
 
   if (!mounted) return null;
@@ -95,23 +102,25 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Menu tengah */}
-        <nav className="hidden md:flex justify-center items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-base font-normal border-b-2 transition 
-              ${
-                activeSection === item.href
-                  ? "text-blue-600 border-blue-600"
-                  : "text-gray-700 border-transparent hover:border-blue-600"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Menu tengah - hanya tampil di halaman utama */}
+        {!isSpecialPage && (
+          <nav className="hidden md:flex justify-center items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-base font-normal border-b-2 transition 
+                ${
+                  activeSection === item.href
+                    ? "text-blue-600 border-blue-600"
+                    : "text-gray-700 border-transparent hover:border-blue-600"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
 
         {/* Language & Contact kanan */}
         <div className="hidden md:flex justify-end items-center gap-4">
@@ -175,7 +184,8 @@ const Header = () => {
             className="md:hidden bg-white shadow-md overflow-hidden"
           >
             <div className="px-6 py-4 space-y-3">
-              {navItems.map((item) => (
+              {/* Menu navigasi hanya tampil di halaman utama */}
+              {!isSpecialPage && navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -189,6 +199,7 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
+              
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}

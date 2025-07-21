@@ -64,7 +64,7 @@ const Partners = () => {
   const [titleFirst, titleSecond] = title.split(" ", 2);
 
   return (
-    <section className="relative bg-white py-20">
+    <section id="mitra" className="relative bg-white py-20 font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <motion.div
@@ -74,13 +74,13 @@ const Partners = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-4xl font-bold text-gray-900 font-montserrat">
             {titleFirst}{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-montserrat">
               {titleSecond}
             </span>
           </h2>
-          <p className="text-gray-600 text-lg mt-3 max-w-2xl mx-auto">{subtitle}</p>
+          <p className="text-gray-600 text-lg mt-3 max-w-2xl mx-auto font-montserrat">{subtitle}</p>
         </motion.div>
 
         {/* Logos */}
@@ -99,7 +99,7 @@ const Partners = () => {
             return (
               <motion.div
                 key={partner.id}
-                className="bg-white border rounded-xl shadow-sm p-4 flex items-center justify-center hover:shadow-md transition"
+                className="bg-white border rounded-xl shadow-sm p-4 flex items-center justify-center hover:shadow-md transition font-montserrat"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -118,7 +118,7 @@ const Partners = () => {
 
         {/* Stats */}
         <motion.div
-          className="mt-16 border-t border-gray-100 pt-12"
+          className="mt-16 border-t border-gray-100 pt-12 font-montserrat"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
@@ -131,20 +131,20 @@ const Partners = () => {
               return (
                 <motion.div
                   key={i}
-                  className="text-center"
+                  className="text-center font-montserrat"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 * i }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 font-montserrat">
                     {isSuccessRate ? (
                       <AnimatedCount to={parseFloat(stat.value.replace(",", "."))} />
                     ) : (
                       stat.value
                     )}
                   </div>
-                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide">
+                  <div className="text-gray-600 text-sm font-medium uppercase tracking-wide font-montserrat">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -157,4 +157,4 @@ const Partners = () => {
   );
 };
 
-export default Partners;
+export default Partners;  

@@ -40,10 +40,12 @@ export default function RaceTimeline() {
   }));
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
     const handleScroll = () => {
       setIsScrolling(true);
-      clearTimeout((handleScroll as any)._timeout);
-      (handleScroll as any)._timeout = setTimeout(() => setIsScrolling(false), 300);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setIsScrolling(false), 150); // Reduced timeout
 
       if (sectionRef.current) {
         const rect = (sectionRef.current as HTMLElement).getBoundingClientRect();
@@ -52,21 +54,24 @@ export default function RaceTimeline() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true }); // Added passive
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="timeline"
-      className="py-32 px-5 md:px-12 lg:px-24"
+      className="py-32 px-5 md:px-12 lg:px-24 font-montserrat"
       style={{
         background: "linear-gradient(to bottom, white, rgba(255, 255, 255, 0.97))",
       }}
     >
       <motion.h2
-        className="text-5xl font-bold text-center text-[#f05423] mb-16"
+        className="text-5xl font-bold text-center text-[#f05423] mb-16 font-montserrat"
         initial={{ opacity: 0, y: 30 }}
         animate={isInViewPort ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6 }}
@@ -80,7 +85,7 @@ export default function RaceTimeline() {
           <motion.div
             className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-blue-500 via-orange-500 to-transparent"
             animate={{ x: ["-100%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 12, ease: "linear" }} // Slower animation
           />
         </div>
 
@@ -103,7 +108,7 @@ export default function RaceTimeline() {
           <motion.div
             className="absolute left-0 w-full h-1/2 bg-gradient-to-b from-blue-500 via-orange-500 to-transparent"
             animate={{ y: ["-50%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 8, ease: "linear" }} // Slower animation
           />
         </div>
 
@@ -153,12 +158,14 @@ function TimelineItem({
   return (
     <motion.div
       ref={ref}
-      className="flex flex-col items-center text-center z-10"
-      initial={{ opacity: 0, y: 30 }}
+      className="flex flex-col items-center text-center z-10 font-montserrat"
+      initial={{ opacity: 0, y: 20 }} // Reduced initial y offset
       animate={
-        isInView && isInViewPort ? { opacity: 1, y: 0, rotate: [0, 3, -2, 0] } : { opacity: 0, y: 30 }
+        isInView && isInViewPort 
+          ? { opacity: 1, y: 0 } // Removed the shake animation for performance
+          : { opacity: 0, y: 20 }
       }
-      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeInOut" }}
+      transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }} // Reduced duration and delay
     >
       <div className="relative w-12 h-12 flex items-center justify-center mb-4">
         <motion.div
@@ -170,19 +177,19 @@ function TimelineItem({
             filter: "blur(3px)",
           }}
           animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 10, ease: "linear" }} // Slower rotation
         />
         <motion.div
           className={`absolute w-12 h-12 rounded-full blur-md ${item.color} opacity-60 z-0`}
           animate={
-            isInView && isInViewPort
-              ? { scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] }
-              : { scale: 1, opacity: 0 }
+            isInView && isInViewPort && !isScrolling // Only animate when not scrolling
+              ? { scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] } // Reduced scale and opacity changes
+              : { scale: 1, opacity: 0.4 }
           }
           transition={{
             repeat: Infinity,
             repeatType: "loop",
-            duration: 2.5,
+            duration: 3, // Slower pulsing
             delay: index * 0.1,
             ease: "easeInOut",
           }}
@@ -190,18 +197,22 @@ function TimelineItem({
         <div className="w-6 h-6 rounded-full border-4 border-gray-400 bg-white z-10" />
       </div>
 
-      <h4 className="text-base md:text-lg font-semibold text-gray-700 mb-1">{item.year}</h4>
-      <p className="text-sm md:text-base text-gray-500">{item.title}</p>
+      <h4 className="text-base md:text-lg font-semibold text-gray-700 mb-1 font-montserrat">{item.year}</h4>
+      <div className="h-[50px] flex items-center justify-center">
+        <p className="text-sm md:text-base text-gray-500 text-center leading-tight font-montserrat">{item.title}</p>
+      </div>
 
       <motion.div
-        className={`mt-5 w-[180px] min-h-[100px] bg-white border border-gray-200 shadow-sm rounded-xl p-4 flex items-center justify-center text-center text-sm text-gray-700 ${
+        className={`mt-5 w-[180px] h-[100px] bg-white border border-gray-200 shadow-sm rounded-xl p-4 flex items-center justify-center text-center text-sm text-gray-700 leading-relaxed font-montserrat ${
           isMobile ? (index % 2 === 0 ? "ml-4" : "mr-4") : ""
         }`}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={isInView && isInViewPort ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={isInView && isInViewPort ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
       >
-        {item.desc}
+        <span className="overflow-hidden text-ellipsis font-montserrat">
+          {item.desc}
+        </span>
       </motion.div>
     </motion.div>
   );

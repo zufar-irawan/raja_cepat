@@ -11,7 +11,7 @@ const getVehicles = (t: (key: string, options?: any) => string) => [
     capacity: "2.200kg",
     dimensions: "310×170×170",
     color: "#3b82f6",
-    key: "cdeTruck"
+    key: "cdeTruck",
   },
   {
     name: t("vehicle.types.cdeFrozen"),
@@ -19,7 +19,7 @@ const getVehicles = (t: (key: string, options?: any) => string) => [
     capacity: "2.000kg",
     dimensions: "475×170×175",
     color: "#06b6d4",
-    key: "cdeFrozen"
+    key: "cdeFrozen",
   },
   {
     name: t("vehicle.types.l300"),
@@ -27,7 +27,7 @@ const getVehicles = (t: (key: string, options?: any) => string) => [
     capacity: "800kg",
     dimensions: "237×163×122",
     color: "#10b981",
-    key: "l300"
+    key: "l300",
   },
   {
     name: t("vehicle.types.grandMax"),
@@ -35,7 +35,7 @@ const getVehicles = (t: (key: string, options?: any) => string) => [
     capacity: "600kg",
     dimensions: "220×135×130",
     color: "#f59e0b",
-    key: "grandMax"
+    key: "grandMax",
   },
   {
     name: t("vehicle.types.motor"),
@@ -43,7 +43,7 @@ const getVehicles = (t: (key: string, options?: any) => string) => [
     capacity: "30kg",
     dimensions: "100×50×40",
     color: "#ef4444",
-    key: "motor"
+    key: "motor",
   },
 ];
 
@@ -52,9 +52,11 @@ const VehicleSection = () => {
   const vehicles = getVehicles(t);
 
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-white py-16 px-4">
+    <section
+      id="kendaraan"
+      className="bg-gradient-to-br from-slate-50 to-white py-16 px-4"
+    >
       <div className="max-w-7xl mx-auto">
-
         {/* Header */}
         <motion.div
           className="text-center mb-12"
@@ -62,7 +64,9 @@ const VehicleSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-semibold text-gray-900 mb-2">{t("vehicle.title")}</h2>
+          <h2 className="text-3xl font-semibold text-gray-900 mb-2">
+            {t("vehicle.title")}
+          </h2>
           <p className="text-gray-600">{t("vehicle.subtitle")}</p>
         </motion.div>
 
@@ -83,9 +87,15 @@ const VehicleSection = () => {
                     src={vehicle.image}
                     alt={vehicle.name}
                     className="w-full h-36 object-contain px-4 filter drop-shadow transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,0,0,0.2)]"
-                    style={{ filter: `drop-shadow(0 0 0 ${vehicle.color})` }}
-                    onMouseOver={(e) => (e.currentTarget.style.filter = `drop-shadow(0 0 20px ${vehicle.color})`)}
-                    onMouseOut={(e) => (e.currentTarget.style.filter = `drop-shadow(0 0 0 ${vehicle.color})`)}
+                    style={{
+                      filter: `drop-shadow(0 0 0 ${vehicle.color})`,
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.filter = `drop-shadow(0 0 20px ${vehicle.color})`)
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.filter = `drop-shadow(0 0 0 ${vehicle.color})`)
+                    }
                   />
 
                   {/* Overlay Info Button */}
@@ -96,7 +106,7 @@ const VehicleSection = () => {
                   </div>
 
                   {/* Color Accent */}
-                  <div 
+                  <div
                     className="absolute bottom-0 left-0 right-0 h-1"
                     style={{ backgroundColor: vehicle.color }}
                   />
@@ -133,20 +143,19 @@ const VehicleSection = () => {
         >
           <div className="inline-flex items-center gap-6 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#22c55e' }} />
+              <span className="text-lg">🔧</span>
               {t("vehicle.features.wellMaintained")}
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
+              <span className="text-lg">📸</span>
               {t("vehicle.features.realPhotos")}
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#8b5cf6' }} />
+              <span className="text-lg">🚚</span>
               {t("vehicle.features.readyToday")}
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

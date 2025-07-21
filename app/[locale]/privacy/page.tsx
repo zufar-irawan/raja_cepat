@@ -119,14 +119,14 @@ const PrivacyPage = () => {
     // Handle special cases for different sections
     if (section.id === "introduction") {
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <p className="text-gray-700 leading-relaxed text-lg">
             {getSafeTranslation("privacy.sections.introduction.content.welcome")}
           </p>
           <p className="text-gray-700 leading-relaxed text-lg">
-            <strong>{getSafeTranslation("privacy.sections.introduction.content.personalDataDefinition")}</strong>
+            <strong className="font-montserrat font-semibold">{getSafeTranslation("privacy.sections.introduction.content.personalDataDefinition")}</strong>
           </p>
-          <p className="text-gray-700 leading-relaxed text-lg font-medium">
+          <p className="text-gray-700 leading-relaxed text-lg font-montserrat font-medium">
             {getSafeTranslation("privacy.sections.introduction.content.disclaimer")}
           </p>
         </div>
@@ -136,7 +136,7 @@ const PrivacyPage = () => {
     if (section.id === "collection") {
       const situations = t("privacy.sections.collection.content.situations", { returnObjects: true }) as string[];
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <p className="text-gray-700 leading-relaxed text-lg">
             {getSafeTranslation("privacy.sections.collection.content.description")}
           </p>
@@ -144,7 +144,7 @@ const PrivacyPage = () => {
             {Array.isArray(situations) && situations.map((item, index) => (
               <div key={index} className="flex items-start gap-3 text-gray-700 leading-relaxed">
                 <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 flex-shrink-0"></div>
-                <span>{item}</span>
+                <span className="font-montserrat">{item}</span>
               </div>
             ))}
           </div>
@@ -155,7 +155,7 @@ const PrivacyPage = () => {
     if (section.id === "dataTypes") {
       const types = t("privacy.sections.dataTypes.content.types", { returnObjects: true }) as string[];
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <p className="text-gray-700 leading-relaxed text-lg">
             {getSafeTranslation("privacy.sections.dataTypes.content.description")}
           </p>
@@ -163,7 +163,7 @@ const PrivacyPage = () => {
             {Array.isArray(types) && types.map((item, index) => (
               <div key={index} className="flex items-start gap-3 text-gray-700 leading-relaxed">
                 <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 flex-shrink-0"></div>
-                <span>{item}</span>
+                <span className="font-montserrat">{item}</span>
               </div>
             ))}
           </div>
@@ -174,12 +174,12 @@ const PrivacyPage = () => {
     if (section.id === "location") {
       const usageItems = t("privacy.sections.location.content.usageItems", { returnObjects: true }) as string[];
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <div className="bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.location.content.backgroundAccess.title")}
             </h4>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.location.content.backgroundAccess.description")}
             </p>
           </div>
@@ -190,15 +190,15 @@ const PrivacyPage = () => {
             {Array.isArray(usageItems) && usageItems.map((item, index) => (
               <div key={index} className="flex items-start gap-3 text-gray-700 leading-relaxed">
                 <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 flex-shrink-0"></div>
-                <span>{item}</span>
+                <span className="font-montserrat">{item}</span>
               </div>
             ))}
           </div>
           <div className="bg-yellow-50 p-4 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.location.content.userControl.title")}
             </h4>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.location.content.userControl.description")}
             </p>
           </div>
@@ -209,15 +209,15 @@ const PrivacyPage = () => {
     if (section.id === "usage") {
       const purposes = t("privacy.sections.usage.content.purposes", { returnObjects: true }) as Array<{title: string, description: string}>;
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <p className="text-gray-700 leading-relaxed text-lg">
             {getSafeTranslation("privacy.sections.usage.content.description")}
           </p>
           <div className="space-y-3">
             {Array.isArray(purposes) && purposes.map((purpose, index) => (
               <div key={index} className="border-l-4 border-blue-200 pl-4">
-                <h4 className="font-medium text-gray-900 mb-1">{purpose.title}</h4>
-                <p className="text-gray-700 text-sm">{purpose.description}</p>
+                <h4 className="font-montserrat font-medium text-gray-900 mb-1">{purpose.title}</h4>
+                <p className="text-gray-700 text-sm font-montserrat">{purpose.description}</p>
               </div>
             ))}
           </div>
@@ -227,20 +227,20 @@ const PrivacyPage = () => {
 
     if (section.id === "security") {
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <div className="bg-green-50 p-4 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.security.content.measures.title")}
             </h4>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.security.content.measures.description")}
             </p>
           </div>
           <div className="bg-orange-50 p-4 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.security.content.notice.title")}
             </h4>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.security.content.notice.description")}
             </p>
           </div>
@@ -250,34 +250,34 @@ const PrivacyPage = () => {
 
     if (section.id === "rights") {
       return (
-        <div className="space-y-3">
+        <div className="space-y-3 font-montserrat">
           <div className="border border-gray-200 rounded-lg p-4">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.rights.content.optOut.title")}
             </h4>
-            <p className="text-gray-700 text-sm mb-2">
+            <p className="text-gray-700 text-sm mb-2 font-montserrat">
               {getSafeTranslation("privacy.sections.rights.content.optOut.description")}
             </p>
-            <p className="text-blue-600 text-sm">
+            <p className="text-blue-600 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.rights.content.optOut.contact")}
             </p>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.rights.content.access.title")}
             </h4>
-            <p className="text-gray-700 text-sm mb-2">
+            <p className="text-gray-700 text-sm mb-2 font-montserrat">
               {getSafeTranslation("privacy.sections.rights.content.access.description")}
             </p>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.rights.content.access.processingTime")}
             </p>
           </div>
           <div className="bg-red-50 p-4 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">
+            <h4 className="font-montserrat font-medium text-gray-900 mb-2">
               {getSafeTranslation("privacy.sections.rights.content.consequences.title")}
             </h4>
-            <p className="text-gray-700 text-sm">
+            <p className="text-gray-700 text-sm font-montserrat">
               {getSafeTranslation("privacy.sections.rights.content.consequences.description")}
             </p>
           </div>
@@ -287,14 +287,14 @@ const PrivacyPage = () => {
 
     // Default rendering for simple content
     return (
-      <p className="text-gray-700 leading-relaxed text-lg">
+      <p className="text-gray-700 leading-relaxed text-lg font-montserrat">
         {getSafeTranslation(contentKey || "")}
       </p>
     );
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-white">
+    <main className="flex flex-col min-h-screen bg-white font-montserrat">
       <Header />
       
       {/* Hero Section */}
@@ -303,13 +303,13 @@ const PrivacyPage = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
             <Shield className="w-8 h-8 text-blue-600" />
           </div>
-          <h1 className="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          <h1 className="text-5xl font-montserrat font-light text-gray-900 mb-6 tracking-tight">
             {getSafeTranslation("privacy.title", "Privacy Policy")}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-montserrat">
             {getSafeTranslation("privacy.subtitle", "Raja Cepat is committed to protecting the privacy and security of your personal data")}
           </p>
-          <div className="mt-6 text-sm text-gray-500">
+          <div className="mt-6 text-sm text-gray-500 font-montserrat">
             {getSafeTranslation("privacy.footer.disclaimer", "This Privacy Policy may be changed at any time. Changes will be announced through our website.")}
           </div>
         </div>
@@ -340,7 +340,7 @@ const PrivacyPage = () => {
                     </div>
                     
                     <div className="flex-1">
-                      <h2 className="text-2xl font-light text-gray-900 mb-4 tracking-tight">
+                      <h2 className="text-2xl font-montserrat font-light text-gray-900 mb-4 tracking-tight">
                         {getSafeTranslation(section.title as string)}
                       </h2>
                       

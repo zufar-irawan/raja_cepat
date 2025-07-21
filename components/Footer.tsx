@@ -2,14 +2,20 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Facebook, Instagram } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const [currentYear, setCurrentYear] = useState(2025);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
-    <footer className="relative bg-[#0f172a]/80 text-white overflow-hidden backdrop-blur-md">
+    <footer className="relative bg-[#0f172a]/80 text-white overflow-hidden backdrop-blur-md font-montserrat">
       {/* Background decoration */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-72 h-72 bg-[#ff671f]/10 rounded-full blur-3xl" />
@@ -39,24 +45,25 @@ export default function Footer() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">{t("footer.logo.name")}</h3>
-                  <p className="text-sm text-gray-400">{t("footer.logo.tagline")}</p>
+                  <h3 className="text-2xl font-montserrat font-bold">{t("footer.logo.name")}</h3>
+                  <p className="text-sm text-gray-400 font-montserrat">{t("footer.logo.tagline")}</p>
                 </div>
               </div>
 
-              <p className="text-gray-300 text-lg leading-relaxed max-w-md">
+              <p className="text-gray-300 text-lg leading-relaxed max-w-md font-montserrat">
                 {t("footer.description")}
               </p>
 
               {/* Sosial Media */}
               <div className="flex space-x-4">
                 {[
-                  { icon: Facebook, name: "facebook" },
-                  { icon: Instagram, name: "instagram" },
-                ].map(({ icon: Icon, name }, i) => (
+                  { icon: Instagram, name: "instagram", href: "https://www.instagram.com/raja.cepat/" },
+                ].map(({ icon: Icon, name, href }, i) => (
                   <motion.a
                     key={i}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={t(`footer.social.${name}`)}
                     whileHover={{ scale: 1.1, y: -2 }}
                     className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20 hover:bg-[#ff671f]/20 hover:border-[#ff671f]/30 transition-all duration-300"
@@ -76,7 +83,7 @@ export default function Footer() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-[#ff671f] font-semibold text-lg mb-6 flex items-center">
+                <h4 className="text-[#ff671f] font-montserrat font-semibold text-lg mb-6 flex items-center">
                   <div className="w-2 h-2 bg-[#ff671f] rounded-full mr-3" />
                   {t("footer.sections.help.title")}
                 </h4>
@@ -84,7 +91,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="#"
-                      className="group flex items-center hover:text-[#ff671f] transition-colors duration-300"
+                      className="group flex items-center hover:text-[#ff671f] transition-colors duration-300 font-montserrat"
                     >
                       <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                       {t("footer.sections.help.items.terms")}
@@ -93,7 +100,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/privacy"
-                      className="group flex items-center hover:text-[#ff671f] transition-colors duration-300"
+                      className="group flex items-center hover:text-[#ff671f] transition-colors duration-300 font-montserrat"
                     >
                       <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                       {t("footer.sections.help.items.privacy")}
@@ -109,7 +116,7 @@ export default function Footer() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-[#ff671f] font-semibold text-lg mb-6 flex items-center">
+                <h4 className="text-[#ff671f] font-montserrat font-semibold text-lg mb-6 flex items-center">
                   <div className="w-2 h-2 bg-[#ff671f] rounded-full mr-3" />
                   {t("footer.sections.downloadApp.title")}
                 </h4>
@@ -136,16 +143,16 @@ export default function Footer() {
             viewport={{ once: true }}
             className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0"
           >
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm font-montserrat">
               {t("footer.bottom.copyright", {
-                year: new Date().getFullYear(),
+                year: currentYear,
               })}
             </p>
             <div className="flex space-x-6 text-sm text-gray-400">
-              <Link href="/privacy" className="hover:text-[#ff671f] transition-colors">
+              <Link href="/privacy" className="hover:text-[#ff671f] transition-colors font-montserrat">
                 {t("footer.bottom.links.privacyPolicy")}
               </Link>
-              <Link href="#" className="hover:text-[#ff671f] transition-colors">
+              <Link href="#" className="hover:text-[#ff671f] transition-colors font-montserrat">
                 {t("footer.bottom.links.termsOfService")}
               </Link>
             </div>

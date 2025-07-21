@@ -27,9 +27,9 @@
       "switchLanguage": "Beralih bahasa"
     },
     "descriptions": {
-      "rajaCepat": "Raja Cepat adalah perusahaan yang menawarkan platform berbasis aplikasi yang menyediakan layanan kurir lintas batas. ",
-      "express": "Raja Cepat Express adalah layanan pengiriman titik yang membantu semua kebutuhan distribusi barang Anda dengan berbagai opsi armada dan jaminan keamanan untuk barang selama pengiriman. ",
-      "services": "Kami mengoperasikan kendaraan berkualitas dengan pengemudi terlatih, dan dapat diandalkan untuk mengirimkan kargo Anda. "
+      "rajaCepat": "Raja Cepat adalah perusahaan yang menawarkan platform berbasis aplikasi yang menyediakan layanan kurir lintas batas. Raja Cepat berfokus pada layanan pengiriman melalui transportasi darat dan udara untuk tujuan domestik. Raja Cepat telah menyediakan layanan ekspedisi kargo darat sejak tahun 2018.",
+      "express": "Raja Cepat Express adalah layanan pengiriman Point to Point yang membantu semua kebutuhan distribusi barang Anda dengan beragam pilihan armada dan jaminan keamanan barang selama pengiriman. Kami juga menyediakan layanan pengiriman ke banyak tujuan dengan satu tarif. ",
+      "services": "Kami mengoperasikan kendaraan berkualitas dengan pengemudi terlatih, dan dapat diandalkan untuk mengantarkan kargo Anda. Ketepatan waktu adalah prioritas kami. Dan kami berupaya sebaik mungkin untuk memastikan setiap barang yang Anda percayakan tetap dalam kondisi baik."
     }
   },
   "scroll": {
@@ -99,7 +99,7 @@
     }
   },
   "timeline": {
-    "title": "Timeline balapan",
+    "title": "Timeline RACE",
     "items": {
       "2017": {
         "title": "Didirikan",
@@ -275,15 +275,15 @@
       "hours": [
         {
           "days": "Senin - Jumat",
-          "time": "9:00 - 18:00"
+          "time": "8:00 - 17:00"
         },
         {
           "days": "Sabtu",
-          "time": "9:00 - 14:00"
+          "time": "8:00 - 15:00"
         },
         {
           "days": "Minggu",
-          "time": "Tertutup"
+          "time": "Tutup"
         }
       ]
     }
@@ -483,7 +483,7 @@
       },
       "location": {
         "title": "Alamat",
-        "value": "Jl. ",
+        "value": "Jl. H. Baping No.100 Ciracas, Jakarta Timur ",
         "description": "Kunjungi kantor kami selama jam kerja."
       }
     },
@@ -492,11 +492,11 @@
       "hours": {
         "monFri": {
           "days": "Senin - Jumat",
-          "time": "08:00 AM - 05:00"
+          "time": "08:00 pagi - 17:00"
         },
         "saturday": {
           "days": "Sabtu",
-          "time": "08:00 pagi - 01:00"
+          "time": "08:00 pagi - 15:00"
         },
         "sunday": {
           "days": "Minggu",
